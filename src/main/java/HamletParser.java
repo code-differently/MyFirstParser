@@ -10,10 +10,16 @@ public class HamletParser {
     private String hamletData;
 
     public HamletParser(){
+
+        String hamletData = "The Tragedy of Hamlet, Prince of DenmarkACT ISCENE I.The Tragedy of Hamlet, Prince of DenmarkACT ISCENE I.";
+        String replaceString = hamletData.replaceAll("Hamlet", "Jordan");
+        System.out.println(replaceString);
         this.hamletData = loadFile();
     }
 
     //Todo: Add you code Here
+
+
 
 
     public static void main(String[] args) {
