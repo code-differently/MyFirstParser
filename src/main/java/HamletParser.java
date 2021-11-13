@@ -3,18 +3,47 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
+import java.util.regex.Pattern;
+
+
 
 public class HamletParser {
     private static final String FILE_NAME = "hamlet.txt";
 
     private String hamletData;
 
+//Adding patterns to work with regEx;
+
+    Pattern hamletPattern = Pattern.compile("Hamlet", Pattern.CASE_INSENSITIVE);
+    Pattern horatioPattern = Pattern.compile("Horatio", Pattern.CASE_INSENSITIVE);
+
+//Defining a constructor with no parameters HamletParser
     public HamletParser(){
         this.hamletData = loadFile();
     }
 
     //Todo: Add you code Here
+//Creating a method FindHoratio;
+//Searching through a text for multiple occurrences of a regular expression, using matcher;
+//Finding and returning all occurrences of Horatio;
+    public Boolean FindHoratio() {
+        return horatioPattern.matcher(hamletData).find();
+    }
+//Same steps for finding occurrences of Hamlet in text file;
+    public Boolean FindHamlet() {
+        return hamletPattern.matcher(hamletData).find();
+    }
 
+//Creating a method changeHamletToJordan with one parameter String s;
+//Replace all occurrences of Hamlet with Jordan. Returning the result
+    public String changeHamletToJordan(String s) {
+        return hamletPattern.matcher(s).replaceAll("Jordan");
+    }
+
+//Same steps for replacing occurrences of Horatio with Tariq;
+    public String changeHoratioToTariq(String s) {
+        return horatioPattern.matcher(s).replaceAll("Tariq");
+    }
 
     public static void main(String[] args) {
         HamletParser hamletParser = new HamletParser();
